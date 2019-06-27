@@ -103,15 +103,27 @@ class AVL {
 
   leftRightRotate(node) {
     console.log('left right rotate');
-    console.log(node);
+    const data = node.left.data;
+    node.left.data = node.left.right.data;
+    node.left.left = node.left.right;
+    node.left.right = undefined;
+    node.left.left.data = data;
+
+    this.rightRotate(node);
   }
 }
 
 console.clear();
 const avl = new AVL();
 
-avl.add(4);
-avl.add(3);
-avl.add(1);
+// Right rotate.
+// avl.add(4);
+// avl.add(3);
+// avl.add(1);
+
+// left right rotate
+avl.add(20);
+avl.add(10);
+avl.add(15);
 
 console.log(avl.root);
